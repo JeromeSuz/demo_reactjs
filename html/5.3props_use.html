@@ -15,7 +15,10 @@
                 },
             });
             var instance = ReactDOM.render(<HelloWorld></HelloWorld>, document.body);
-            instance.setProps({name: 'Tim'});
+            // 新版本已经移除这个属性
+            // https://github.com/facebook/react/pull/7044
+            // https://github.com/facebook/react/commit/8c7603311a85739d4f5b42cf05266f63469d0203
+            instance.replaceProps({name: 'Tim'});
         </script>
     </body>
 </html>
