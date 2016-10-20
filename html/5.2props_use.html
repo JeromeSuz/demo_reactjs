@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>props_use {...this.state}</title>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+    </head>
+    <body>
+        <script type="text/babel">
+            var HelloWorld = React.createClass({
+                render: function () {
+                    return <p>Hello, {this.props.name1 + ' ' + this.props.name2}</p>;
+                },
+            });
+            var HelloUniverse = React.createClass({
+                getInitialState: function () {
+                    return {
+                        name1: 'Tim',
+                        name2: 'John',
+                    };
+                },
+                handleChange: function (event) {
+                    this.setState({name1: event.target.value});
+                },
+                render: function () {
+                    //可以使用下面替换
+                    //<HelloWorld name1='Tim' name2 = 'John'></HelloWorld>
+                    return <div>
+                    <HelloWorld {...this.state}></HelloWorld>
+                    <br/>
+                    <input type="text" onChange={this.handleChange} />
+                    </div>
+                },
+            });
+            ReactDOM.render(<div><HelloUniverse></HelloUniverse></div>, document.body);
+        </script>
+    </body>
+</html>
