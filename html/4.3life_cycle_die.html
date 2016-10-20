@@ -15,8 +15,9 @@
                     console.log("render 4");
                     return <p>Hello, {this.props.name ? this.props.name : "World"}</p>;
                 },
+                //在删除组件之前进行清理操作，比如计时器和事件监听器
                 componentWillUnmount: function() {
-                    console.log("BOOOOOOOOOOOOOOOOOM!");
+                    console.log("clear HelloWorld!");
                 },
             });
             var HelloUniverse = React.createClass({
