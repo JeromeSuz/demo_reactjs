@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>react dom dangerouslySetInnerHTML</title>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+        <script src="../build/jquery.min.js"></script>
+    </head>
+    <body>
+        <script type="text/babel">
+            var count = 0;
+            var HelloWorld = React.createClass({
+                getDefaultProps: function () {
+                    console.log("getDefaultProps, 1");
+                    return {name: "Tom"};
+                },
+                getInitialState: function () {
+                    console.log("getInitialState, 2");
+                    return {myCount: ++count,
+                        ready: false};
+                },
+                componentWillMount: function () {
+                    console.log("componentWillMount, 3");
+                    this.setState({ready: true});
+                },
+                render: function () {
+                    console.log("render, 4");
+                    return <p ref="childp">Hello, {this.props.name ? this.props.name : "World"}<br/>{"" + this.state.ready} {this.state.myCount}</p>;
+                },
+                componentDidMount: function () {
+                    console.log("componentDidMount, 5");
+                    $(ReactDOM.findDOMNode(this)).append("surprise!");
+                },
+            });
+            ReactDOM.render(<div><HelloWorld></HelloWorld><br/><HelloWorld></HelloWorld></div>, document.body);
+        </script>
+    </body>
+</html>

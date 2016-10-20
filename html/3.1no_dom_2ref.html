@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>react dom dangerouslySetInnerHTML</title>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+    </head>
+    <body>
+        <script type="text/babel">
+            // ref：父组件引用子组件
+            var HelloWorld = React.createClass({
+                // 取得下面的ref的是虚拟的dom节点，无法进行操作
+                // this.refs.childp
+                render: function () {
+                    return <p ref="childp">Hello, World</p>
+                }
+            });
+            ReactDOM.render(<HelloWorld name='Jerome'></HelloWorld>, document.body);
+        </script>
+    </body>
+</html>

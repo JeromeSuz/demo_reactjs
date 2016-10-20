@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>jsx样式使用</title>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+    </head>
+    <body>
+        <div id="example"></div>
+        <script type="text/babel">
+            var style = {
+                color : "red",
+                //这里只能用驼峰命名不能用font-size
+                fontSize:'88px'
+            };
+            ReactDOM.render(
+                <h1 style={style}>Hello, world!</h1>,
+                //也可以在React中使用style
+                //<h1 style={{color:'red'}}>Hello, world!</h1>,
+                document.getElementById('example')
+            );
+        </script>
+    </body>
+</html>

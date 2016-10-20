@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>条件判断 大括号直接调用</title>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+    </head>
+    <body>
+        <script type="text/babel">
+            var HelloWorld = React.createClass({
+                getName: function () {
+                    if (this.props.name)
+                        return this.props.name
+                    else
+                        return "World"
+                },
+                render: function () {
+                    return <p>Hello, {this.getName()}</p>
+                }
+            });
+            //ReactDOM.render(<div><HelloWorld></HelloWorld></div>, document.body);
+            ReactDOM.render(<HelloWorld name='Jerome'></HelloWorld>, document.body);
+        </script>
+    </body>
+</html>

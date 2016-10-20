@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>jsx样式使用1className</title>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+        <style type="text/css">
+            .text-red{
+                color : red
+            }
+        </style>
+    </head>
+    <body>
+        <div id="example"></div>
+        <script type="text/babel">
+            ReactDOM.render(
+                //元素不能直接写class因为class在es是关键字，无法被识别。要使用className替换原来的class属性。
+                //<h1 class='text-red'>Hello, world!</h1>,
+                <h1 className='text-red'>Hello, world!</h1>,
+                document.getElementById('example')
+            );
+        </script>
+    </body>
+</html>

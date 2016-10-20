@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>react dom dangerouslySetInnerHTML</title>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+    </head>
+    <body>
+        <script type="text/babel">
+            var HelloWorld = React.createClass({
+                render: function () {
+                    return <ul>
+                                <li key="1">1</li>
+                                <li key="2">2</li>
+                                <li key="3">3</li>
+                            </ul>
+                }
+            });
+            ReactDOM.render(<HelloWorld name='Jerome'></HelloWorld>, document.body);
+        </script>
+    </body>
+</html>
