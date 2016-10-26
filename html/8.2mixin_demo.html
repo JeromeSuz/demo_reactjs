@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>mixin demo</title>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+        <script src="../build/react-with-addons.js"></script>
+    </head>
+    <body>
+        <script type="text/babel">
+//            var BindingExample = React.createClass({
+//                getInitialState: function() {
+//                    return {
+//                        text: ''
+//                    }
+//                },
+//                handleChange: function(event) {
+//                    this.setState({text: event.target.value})
+//                },
+//                handleChange2: function(event) {
+//                    this.setState({text2: event.target.value})
+//                },
+//                render: function() {
+//                    return (
+//                        <div>
+//                            <input type="text" placeholder="请输入内容" onChange={this.handleChange} />
+//                            <p>{this.state.text}</p>
+//                            <input type="text" placeholder="请输入内容" onChange={this.handleChange2} />
+//                            <p>{this.state.text2}</p>
+//                        </div>
+//                    )
+//                }
+//            });
+//            ReactDOM.render(<BindingExample></BindingExample>, document.body);
+
+            //以上方式如果有多个input需要绑定，则需要编写多个类似的代码，我们可以用下面Mixin的形式
+//            var BindingMixin = {
+//                handleChange: function(key) {
+//                    var that = this;
+//                    var newState = {};
+//                    return function(event) {
+//                        newState[key] = event.target.value;
+//                        that.setState(newState);
+//                    }
+//                }
+//            };
+//            var BindingExample = React.createClass({
+//                mixins: [BindingMixin],
+//                getInitialState: function() {
+//                    return {
+//                        text: '',
+//                        text2: '',
+//                    }
+//                },
+//                render: function() {
+//                    return (
+//                        <div>
+//                            <input type="text" placeholder="请输入内容" onChange={this.handleChange('text')} />
+//                            <p>{this.state.text}</p>
+//                            <input type="text2" placeholder="请输入内容" onChange={this.handleChange('text2')} />
+//                            <p>{this.state.text2}</p>
+//                        </div>
+//                    )
+//                }
+//            });
+//            ReactDOM.render(<BindingExample></BindingExample>, document.body);
+
+            // 使用react自带的mixin方式
+            var BindingExample = React.createClass({
+                mixins: [React.addons.LinkedStateMixin],
+                getInitialState: function() {
+                    return {
+                        text: '',
+                        text2: '',
+                    }
+                },
+                render: function() {
+                    return (
+                        <div>
+                            <input type="text" placeholder="请输入内容" valueLink={this.linkState('text')} />
+                            <p>{this.state.text}</p>
+                            <input type="text2" placeholder="请输入内容" valueLink={this.linkState('text2')} />
+                            <p>{this.state.text2}</p>
+                        </div>
+                    )
+                }
+            });
+            ReactDOM.render(<BindingExample></BindingExample>, document.body);
+        </script>
+    </body>
+</html>
